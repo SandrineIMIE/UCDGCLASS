@@ -17,7 +17,7 @@ public class Vue extends JFrame implements Observer {
 	public Vue (Controleur controleur){
 		super("Modele MVC");
 		this._controleur = controleur;
-		setSize(400,250);
+		setSize(500,500);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		//_panneau.setlayout(LAYOUT ALEXIS)
 		//

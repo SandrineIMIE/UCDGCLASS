@@ -10,20 +10,19 @@ import java.sql.Statement;
 
 public class State {
 public static void State(String[] args) {
-		//Connect BDD2 = new Connect();
-		//BDDConnectSingleton BDD2 = new BDDConnectSingleton();	
-		/**/
+		BDDConnectSingleton connectBDD = new BDDConnectSingleton();	
+	
 			  try {         
 				    Class.forName("org.postgresql.Driver");
 				   
-				    String url = "jdbc:postgresql://localhost:5432/PROJECTSAE";
-				    String user = "postgres";
-				    String passwd = "s@mi1408";
+			//	    String url = "jdbc:postgresql://localhost:5432/PROJECTSAE";
+				   // String user = "postgres";
+				   // String passwd = "s@mi1408";
 
-				    Connection conn = DriverManager.getConnection(url, user, passwd);
+				 //  Connection conn = DriverManager.getConnection(url, user, passwd);
 				    //On autorise la mise à jour des données 
 				    //Et la mise à jour de l'affichage
-				    Statement state = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+				    Statement state = connectBDD.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 				  /*  PreparedStatement prepare = conn.prepareStatement("UPDATE U set id_user = ? ");*/
 
 				    //On va chercher une ligne dans la base de données
