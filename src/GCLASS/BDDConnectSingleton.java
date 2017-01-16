@@ -1,7 +1,9 @@
 package GCLASS;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class BDDConnectSingleton {
 		 //URL de connexion
@@ -23,14 +25,21 @@ public class BDDConnectSingleton {
 		   
 		  //Méthode qui va nous retourner notre instance et la créer si elle n'existe pas
 		   public static Connection getInstance(){
-			   System.out.println("get! ");
 			   if(connect == null){
 				    new BDDConnectSingleton();
-				    System.out.println("INSTANCIATION DE LA CONNEXION SQL ! ");
 				  }
 				  else{
-				    System.out.println("CONNEXION SQL EXISTANTE ! ");
 				  }
 				  return connect;    
-		  }   
+		  }
+
+		public Statement createStatement(int typeScrollSensitive, int concurUpdatable) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public PreparedStatement prepareStatement(String string) {
+			// TODO Auto-generated method stub
+			return null;
+		}   
 }
