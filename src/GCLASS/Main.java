@@ -11,6 +11,12 @@ public class Main {
 			Vue notrevue = new Vue (controleur);
 			notremodele.addObserver(notrevue);
 			System.out.println("ok!");
+		
+			Utilisateur a = new Utilisateur();
+			a.verifUser();
+			
+			VueAccueil fen = new VueAccueil();
+			
 	}
 	
 	
