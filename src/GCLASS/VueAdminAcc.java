@@ -14,7 +14,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
-
+//
 public class VueAdminAcc extends JFrame {
 
 	protected JPanel container = new JPanel();

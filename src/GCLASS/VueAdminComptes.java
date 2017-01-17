@@ -17,7 +17,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 
-/*import com.sun.org.apache.bcel.internal.generic.NEW;*/
+//*import com.sun.org.apache.bcel.internal.generic.NEW;*/
 
 public class VueAdminComptes extends JFrame {
 

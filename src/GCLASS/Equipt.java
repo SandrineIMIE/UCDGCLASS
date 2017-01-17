@@ -2,9 +2,7 @@ package GCLASS;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-
-
+//
 	/***************************** ATTRIBUTS DE MA CLASSE ***************************************/
 
 public class Equipt {

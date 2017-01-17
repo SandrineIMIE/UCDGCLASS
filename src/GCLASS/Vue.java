@@ -4,7 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
-
+//
 
 
 public class Vue extends JFrame implements Observer {

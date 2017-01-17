@@ -1,7 +1,7 @@
 package GCLASS;
 
 import java.util.Scanner;
-
+//
 public class Promo {
 	String nom;
 	String description;

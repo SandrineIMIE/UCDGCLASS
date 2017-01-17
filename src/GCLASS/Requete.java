@@ -3,7 +3,7 @@ package GCLASS;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
-
+//
 public class Requete {
 	
 	private static BDDConnectSingleton connect;

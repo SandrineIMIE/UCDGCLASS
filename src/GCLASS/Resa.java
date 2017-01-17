@@ -1,7 +1,7 @@
 package GCLASS;
 
 import java.util.Scanner;
-
+//
 public class Resa {
 	
 	/***************************** ATTRIBUTS DE MA CLASSE ***************************************/

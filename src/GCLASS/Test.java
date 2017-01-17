@@ -1,5 +1,5 @@
 package GCLASS;
-
+//
 import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

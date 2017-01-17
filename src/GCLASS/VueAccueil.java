@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 //import com.sun.org.apache.bcel.internal.generic.NEW;
-
+//
 public class VueAccueil extends JFrame {
 
 	
