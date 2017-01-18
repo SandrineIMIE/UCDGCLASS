@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
@@ -18,8 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-//import com.sun.org.apache.bcel.internal.generic.NEW;
-//
 public class VueAccueil extends JFrame {
 
 	
@@ -44,13 +43,16 @@ public class VueAccueil extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.getContentPane().setVisible(true);
 		this.setContentPane(accueil);
+		this.setResizable(false);
 		
+		accueil.setBackground(Color.DARK_GRAY);
 		accueil.setLayout(new BoxLayout(accueil, BoxLayout.PAGE_AXIS));
 		bienv.add(bienvenue);
 		bienvenue.setPreferredSize(new Dimension(300, 50));
 		accueil.add(bienv);
-		//bienvenue.setBackground(Color.black);
-		//bienvenue.setOpaque(true);
+		bienv.setOpaque(false);
+		bienvenue.setForeground(Color.WHITE);
+		bienvenue.setFont(new Font("Arial", Font.BOLD,14));
 		
 		
 		login1.setPreferredSize(new Dimension(150, 30));
@@ -62,6 +64,7 @@ public class VueAccueil extends JFrame {
 		identifiants.add(login1);
 		identifiants.add(login2);
 		accueil.add(identifiants);
+		identifiants.setOpaque(false);
 		
 		mdp1.setPreferredSize(new Dimension(150, 30));
 		mdp1.setBackground(Color.white);
@@ -73,10 +76,26 @@ public class VueAccueil extends JFrame {
 		identifiants1.add(mdp1);
 		identifiants1.add(mdp2);
 		accueil.add(identifiants1);
+		identifiants1.setOpaque(false);
 		
 		ok.setPreferredSize(new Dimension(60,40));
+		ok.setBackground(Color.WHITE);
 		boutonok.add(ok);
 		accueil.add(boutonok);
+		boutonok.setOpaque(false);
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		setVisible(true);
 		
