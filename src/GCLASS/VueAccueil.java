@@ -20,17 +20,25 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class VueAccueil extends JFrame implements Observer {
 
 	
+	/**************************** ATTRIBUTS **********************/
+
 	protected JTextField login2 = new JTextField();
 	protected JTextField mdp2 = new JTextField();
 	protected JPanel accueil = new JPanel(); 
 	protected JPanel identifiants = new JPanel();
 	protected JPanel identifiants1 = new JPanel();
+	protected JPanel vueadmin;
+	protected JPanel vueres;
+	protected JPanel vueformateur = new JPanel();
+	protected JPanel vueetudiant;
+	protected int codevue=1;
 	protected JPanel boutonok = new JPanel();
 	protected JPanel bienv = new JPanel();
 	protected JLabel bienvenue = new JLabel("Bienvenue sur UCD, connectez-vous !", SwingConstants.CENTER);
@@ -39,11 +47,15 @@ public class VueAccueil extends JFrame implements Observer {
 	protected JButton ok = new JButton("Ok");
 	private Controleur _controleur;
 	
+
+	/**************************** CONSTRUCTEUR **********************/
+
+	
 	public VueAccueil(Controleur controleur){
 		super ("Logiciel");
 		this._controleur = controleur;
-		this.setTitle("Logiciel");
-		setSize(500,300);
+		this.setTitle("Logiciel GClass");
+		setSize(800,600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.getContentPane().setVisible(true);
@@ -93,7 +105,8 @@ public class VueAccueil extends JFrame implements Observer {
 		setVisible(true);
 		
 		
-		//Listener de mon bouton
+		/**************************** LISTENER DU BOUTON OK **********************/
+		
 		ok.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				_controleur.verifIdentifiants(login2.getText(), mdp2.getText());
@@ -102,13 +115,37 @@ public class VueAccueil extends JFrame implements Observer {
 
 	}
 	
+	/**************************** FONCTION UPDATE APPELEE LORSQUE CHANGEMENT **********************/
 	
 	public void update(Observable o, Object arg) {
 		if(o instanceof ModeleAccueil) {
 			ModeleAccueil mod = (ModeleAccueil)o;
 			if(mod.isValide())
 			{
-				System.out.println("Connexion valide");
+				System.out.println("Connexion valide (vue)");
+				mod.verifStatut();
+				mod.vueSelonStatut();
+				codevue=mod.getV();
+				
+				switch (codevue){
+				case 2 :
+					System.out.println("vue-formateur");
+					this.setContentPane(vueformateur);
+					this.validate();
+				break;
+				case 3 :
+					System.out.println("vue-Responsable");
+					accueil=vueres;
+				break;
+				case 4 :
+					System.out.println("vue-Admin");
+					accueil=vueadmin;
+				break;
+				default :
+					System.out.println("vue-etudiant");
+					accueil=vueetudiant;
+					break;
+				}
 			}
 		}
 	

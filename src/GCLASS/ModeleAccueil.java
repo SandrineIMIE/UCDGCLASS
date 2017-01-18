@@ -3,6 +3,7 @@ package GCLASS;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Observable;
 
 public class ModeleAccueil extends Observable {
@@ -10,26 +11,42 @@ public class ModeleAccueil extends Observable {
 	
 		/******************ATTRIBUTS DE NOTRE CODE : données pour se logger  ******************/
 	
-		private String nom;
-		private String prenom;
 		private String login;
 		private String password;
+		private String prenom, nom; 
+		private String statut= "Etudiant";
+		private int v=1;
 		private boolean valide;
 		
 		/****************** GETTERS AND SETTERS  ******************/
 		
-		public String getNom() {
-			return nom;
+		public int getV() {
+			return v;
 		}
-		public void setNom(String nom) {
-			this.nom = nom;
-		}
+		public void setV(int v) {
+			this.v = v;
+		}			
+		
+		
 		public String getPrenom() {
 			return prenom;
 		}
 		public void setPrenom(String prenom) {
 			this.prenom = prenom;
 		}
+		public String getNom() {
+			return nom;
+		}
+		public void setNom(String nom) {
+			this.nom = nom;
+		}
+		public String getStatut() {
+			return statut;
+		}
+		public void setStatut(String statut) {
+			this.statut = statut;
+		}
+		
 		public String getLogin() {
 			return login;
 		}
@@ -55,9 +72,8 @@ public class ModeleAccueil extends Observable {
 			
 		}
 		
-		public ModeleAccueil(String nom, String prenom, String login, String password) {
-			this.nom = nom;
-			this.prenom = prenom;
+		public ModeleAccueil(String login, String password) {
+		
 			this.login = login;
 			this.password = password;
 			valide = false;
@@ -82,9 +98,8 @@ public class ModeleAccueil extends Observable {
 				System.out.println("login : " + log);
 				prepare.setString(1, log);
 				ResultSet result = prepare.executeQuery();
-				System.out.println("bouh");
 				  
-				//Si login existe
+			
 				if(result.first())
 				{
 					PreparedStatement prepare2 = BDDConnectSingleton.getInstance().prepareStatement(query2, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -92,17 +107,18 @@ public class ModeleAccueil extends Observable {
 					prepare2.setString(2, mdp);
 					
 					ResultSet result2 = prepare2.executeQuery();
-					//user identifie
+					
 					if(result2.first())
 					{
-						System.out.println("\nIdentification OK...\n");
+						System.out.println("\nIdentification OK (modèle)\n");
 						this.login = log;
 						this.password = mdp;
 						this.valide = true;
 						
 						res = true;
 					}
-					//Mot de passe non valide !
+					
+					
 					else
 					{
 						System.out.println("\nAttention le mot de passe est invalide !\n");
@@ -131,13 +147,55 @@ public class ModeleAccueil extends Observable {
 			public void infoUser(){
 				System.out.println("*** Votre compte Utilisateur ***");
 				System.out.println("Login : "+ login);
-				System.out.println("Nom : "+ nom);
-				System.out.println("Prénom : "+ prenom);
 				System.out.println("Mot de passe : "+ password);
 				setChanged();
 			    notifyObservers();
 			}
-	}
+			
+			/**** VERIFICATION STATUT UTILISATEUR  ********/
+			 
+			
+			public String verifStatut ()  {						
+				String statutuser = null;
+				try {
+					
+					Statement state;
+					state = BDDConnectSingleton.getInstance().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+					String query = "SELECT statut_user FROM utilisateur WHERE login_user ='"+ login+"'";
+				    ResultSet res = state.executeQuery(query);
+				    res.first(); /*le premier*/
+				    System.out.println(res.getString("statut_user"));	
+				    statutuser=res.getString("statut_user");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} 
+			   statut=statutuser;
+			   return statutuser;
+				
+			}		  
+							
+	
+			/**** VUE selon STATUT UTILISATEUR  ********/
+			public void vueSelonStatut ()  {	
+				switch (statut){
+					case "Admin" : 
+						v=4;
+					break;
+					case "Formateur" : 
+						 v=2;
+					break;
+					case "Responsable" : 
+						 v=3;
+					break;
+					default :
+						 v=1;
+					break;
+				}
+				//setChanged();
+				//notifyObservers();
+			}
+}
+			
 
 	
 

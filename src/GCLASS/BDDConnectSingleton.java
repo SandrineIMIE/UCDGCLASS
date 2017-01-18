@@ -7,15 +7,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class BDDConnectSingleton {
+	
+	/**************************** ATTRIBUTS **********************/
+
 	private static final Statement state = null;
-	//URL de connexion
+
 	private String url = "jdbc:postgresql://localhost:5432/PROJECTSAE";
 	private String user = "postgres";
 	private String passwd = "s@mi1408";
-	//Objet Connection
+
 	private static Connection connect;
 
-	//Constructeur privé
+	
+	/**************** CONSTRUCTEUR ****************************/
+	
 	BDDConnectSingleton(){
 		try {
 			connect = DriverManager.getConnection(url, user, passwd);
@@ -57,7 +62,8 @@ public class BDDConnectSingleton {
 		BDDConnectSingleton.connect = connect;
 	}
 
-	//Méthode qui va nous retourner notre instance et la créer si elle n'existe pas
+	/****Méthode qui va nous retourner notre instance et la créer si elle n'existe pas****/
+	
 	public static Connection getInstance(){
 		if(connect == null){
 			new BDDConnectSingleton();
@@ -69,7 +75,7 @@ public class BDDConnectSingleton {
 
 	public Statement createStatement() {
 		int a= ResultSet.TYPE_SCROLL_SENSITIVE;
-		int b=ResultSet.CONCUR_UPDATABLE;//(modifiable) ou lsible CONCUR_READONLY
+		int b=ResultSet.CONCUR_UPDATABLE;
 		System.out.println("-Statement-");
 		Statement state = null;
 		try {

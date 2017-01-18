@@ -1,18 +1,21 @@
 package GCLASS;
 
-
 public class Main {
 	//
 	
 	public static void main (String[]args)
 	{
-			
+		
 			ModeleAccueil notremodele = new ModeleAccueil();
 			Controleur controleur = new Controleur (notremodele);
 			VueAccueil notrevue = new VueAccueil (controleur);
 			notremodele.addObserver(notrevue);		
 			
 	}
+
+	
+
+	  
 	
 	
 }
