@@ -10,6 +10,10 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -19,7 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class VueAccueil extends JFrame {
+public class VueAccueil extends JFrame implements Observer {
 
 	
 	protected JTextField login2 = new JTextField();
@@ -33,10 +37,11 @@ public class VueAccueil extends JFrame {
 	protected JLabel login1 = new JLabel("Login", SwingConstants.CENTER);
 	protected JLabel mdp1 = new JLabel("Mot de passe", SwingConstants.CENTER);
 	protected JButton ok = new JButton("Ok");
+	private Controleur _controleur;
 	
-	public VueAccueil(){
-		
-		JFrame fenetre = new JFrame("Logiciel");
+	public VueAccueil(Controleur controleur){
+		super ("Logiciel");
+		this._controleur = controleur;
 		this.setTitle("Logiciel");
 		setSize(500,300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,21 +90,30 @@ public class VueAccueil extends JFrame {
 		boutonok.setOpaque(false);
 		
 		
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		setVisible(true);
 		
 		
-		
+		//Listener de mon bouton
+		ok.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				_controleur.verifIdentifiants(login2.getText(), mdp2.getText());
+			}
+		});
+
+	}
+	
+	
+	public void update(Observable o, Object arg) {
+		if(o instanceof ModeleAccueil) {
+			ModeleAccueil mod = (ModeleAccueil)o;
+			if(mod.isValide())
+			{
+				System.out.println("Connexion valide");
+			}
 		}
-}
+	
+		
+	}
+	
+	}
+		

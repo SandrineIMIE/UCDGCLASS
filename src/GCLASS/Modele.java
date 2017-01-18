@@ -7,7 +7,11 @@ import java.util.Scanner;
 public class Modele extends Observable {
 
 	
-	//ATTRIBUTS DE NOTRE CODE
+	/******************ATTRIBUTS DE NOTRE CODE : données ******************/
+	
+	
+	
+
 	
 	//CONSTRUCTEUR
 	
@@ -15,7 +19,25 @@ public class Modele extends Observable {
 	
 	//METHODES
 
+		/****************** METHODES ******************/
 	
+	
+	
+	/****************** AJOUTER DONNEE ******************/
+	
+
+	/****************** RECUPERER DONNEE ******************/
+	
+	
+
+	/****************** STOCKER DONNEE RECUPEREE ******************/
+
+		/****************** MODIFIER DONNEE ******************/
+	
+	
+
+	/****************** SUPPRIMER DONNEE ******************/
+
 	
 	public void verifResponsable(){    //on avertit le modele du changement
 				

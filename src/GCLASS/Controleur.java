@@ -3,23 +3,19 @@ package GCLASS;
 import java.util.Scanner;
 
 public class Controleur {
-private Modele modele;	
+private ModeleAccueil modele;	
+
 	
-	public Controleur(Modele mod) {
+	public Controleur(ModeleAccueil mod) {
 		modele = mod;
 	}
 	
 	/**
 	 * VUE SIGNALE LES ACTIONS QUI ONT CHANGE
 	 */
+	public void verifIdentifiants(String login, String mdp){
+		modele.verifierIdentifiants(login, mdp);
+	}
 	
-			/*********************************** METHODE DE VERIFICATION USER est RESPONSABLE pour créer RESERVATION ***********/
-			
-			
-			public void verifResponsable(){    //on avertit le modele du changement
-				modele.verifResponsable();
-			}
-		
+	
 }
-
-
