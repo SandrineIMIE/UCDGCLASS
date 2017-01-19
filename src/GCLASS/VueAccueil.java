@@ -34,10 +34,11 @@ public class VueAccueil extends JFrame implements Observer {
 	protected JPanel accueil = new JPanel(); 
 	protected JPanel identifiants = new JPanel();
 	protected JPanel identifiants1 = new JPanel();
-	protected JPanel vueadmin;
-	protected JPanel vueres;
+	protected JPanel vueadmin= new JPanel();
+	protected JPanel vueres = new JPanel();
 	protected JPanel vueformateur = new JPanel();
-	protected JPanel vueetudiant;
+	protected JPanel vueetudiant= new JPanel();
+	protected Planning jour= new Planning(new String("19/01/2017"),new String("Lundi"), new String("cours1"),new String("Salle1"),new String("prof1"),new String("promo1"));
 	protected int codevue=1;
 	protected JPanel boutonok = new JPanel();
 	protected JPanel bienv = new JPanel();
@@ -129,21 +130,24 @@ public class VueAccueil extends JFrame implements Observer {
 				
 				switch (codevue){
 				case 2 :
-					System.out.println("vue-formateur");
-					this.setContentPane(vueformateur);
+					System.out.println("vue - formateur");
+					this.setContentPane(jour );
 					this.validate();
 				break;
 				case 3 :
-					System.out.println("vue-Responsable");
-					accueil=vueres;
+					System.out.println("vue - Responsable");
+					this.setContentPane(vueres);
+					this.validate();
 				break;
 				case 4 :
-					System.out.println("vue-Admin");
-					accueil=vueadmin;
+					System.out.println("vue - Admin");
+					this.setContentPane(vueadmin);
+					this.validate();
 				break;
 				default :
-					System.out.println("vue-etudiant");
-					accueil=vueetudiant;
+					System.out.println("vue - Etudiant");
+					this.setContentPane(vueetudiant);
+					this.validate();
 					break;
 				}
 			}

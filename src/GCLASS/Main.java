@@ -1,20 +1,37 @@
 package GCLASS;
 
+import java.beans.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Main {
 	//
 	
+	private static final String String = null;
+
+
 	public static void main (String[]args)
 	{
 		
 			ModeleAccueil notremodele = new ModeleAccueil();
 			Controleur controleur = new Controleur (notremodele);
 			VueAccueil notrevue = new VueAccueil (controleur);
-			notremodele.addObserver(notrevue);		
+			notremodele.addObserver(notrevue);	
+			
+			ajoutResa("19/07/1976", 1, 1,  1,  1);
 			
 	}
 
 	
+	public static void ajoutResa (String date, int salle, int cours, int promo, int prof) {
+	try {
 
+		Statement state= (Statement) BDDConnectSingleton.getInstance().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+	((java.sql.Statement) state).executeUpdate("INSERT INTO resa "	+ "(date_resa, fk_id_salle, fk_id_cours, fk_id_promo, fk_id_user) "    + "VALUES ('"+ date +"','"+ salle+"','"+cours+"','"+promo+"',"+prof+"')");
+	} catch (SQLException e) {
+		e.printStackTrace();
+		} 
+	}
 	  
 	
 	

@@ -10,7 +10,7 @@ public class Resa {
 	private String cours;
 	private String promo;
 	private String prof;
-	private MaDate date;
+	private String date;
 	private int idcours;
 	private int idsalle;
 	private int idpromo;
@@ -18,8 +18,9 @@ public class Resa {
 	
 	/******************************* CONSTRUCTEURS ************************************************/
 
-	public Resa( String salle, String cours, String promo, String prof) {
+	public Resa( String salle, String cours, String promo, String prof, String date) {
 		super();
+		this.date=date;
 		this.salle = salle;
 		this.cours = cours;
 		this.promo = promo;
@@ -58,10 +59,10 @@ public class Resa {
 	public void setPromo(String promo) {
 		this.promo = promo;
 	}
-	public MaDate getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(MaDate date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -94,7 +95,7 @@ public class Resa {
 		System.out.println("Saisir le nom du formateur  :");
 		prof=sc.nextLine();
 		System.out.println("Saisir la date de la réservation");
-		MaDate date= new MaDate();
+		date=sc.nextLine();
 	}	
 	
 	public String toString() {
@@ -163,19 +164,19 @@ public class Resa {
 	}
 	
 	public void modifDate() {
-		MaDate ancien=getDate();
+		String ancien=getDate();
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Saisir la nouvelle date de la réservation");
-		System.out.println("- le jour : ");
+		System.out.println("- le jour (format 00) : ");
 		int jour=sc.nextInt();
-		System.out.println("- le mois : ");
+		System.out.println("- le mois (format 00) : ");
 		int mois=sc.nextInt();
-		System.out.println(" - l'année :");
+		System.out.println(" - l'année (format 0000) :");
 		int annee=sc.nextInt();
-		date=new MaDate(jour, mois, annee);
+		date=jour+"/"+mois+"/"+annee;
 		System.out.println("La date est passée de "+ancien+" à "+date);			
 	}
-	public void modifDate(MaDate nouveau) {
+	public void modifDate(String nouveau) {
 		setDate(nouveau);
 	}
 	

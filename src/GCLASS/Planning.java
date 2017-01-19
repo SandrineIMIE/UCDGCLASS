@@ -19,7 +19,7 @@ public class Planning extends JPanel{
 	private String promo;
 	private String prof;
 	private String jourdate;
-	private MaDate date;
+	private String date;
 	protected JLabel nomdate;
 	protected JLabel nomcours;
 	protected JLabel nomprof;
@@ -27,7 +27,7 @@ public class Planning extends JPanel{
 	protected JLabel nomsalle;
 	protected JLabel nomjour;;
 	
-	public Planning (MaDate adate,String ajour, String acours, String asalle, String aprof, String apromo){
+	public Planning (String adate,String ajour, String acours, String asalle, String aprof, String apromo){
 		
 		/*mise a jour des données*/
 		date=adate;
@@ -42,7 +42,7 @@ public class Planning extends JPanel{
 	public Planning(){
 	
 		/*mise a jour des données*/
-		date = new MaDate (19,1,2017);
+		date = "19/01/2017";
 		salle="PROF";
 		cours="HTML";
 		promo="promo2";

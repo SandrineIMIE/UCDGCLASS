@@ -21,11 +21,11 @@ public class PlanSemaine extends JPanel {
 	
 	public  PlanSemaine(){
 		semaine = new JPanel();
-		j1 = new Planning(new MaDate (20,1,2017),new String("Lundi"), new String("cours1"),new String("Salle1"),new String("prof1"),new String("promo1"));
-		j2 = new Planning(new MaDate (20,1,2017), new String("Marddi"),new String("cours2"),new String("Salle2"),new String("prof2"),new String("promo2"));;
-		j3 = new Planning(new MaDate (21,1,2017), new String("Mercredi"),new String("cours3"),new String("Salle3"),new String("prof3"),new String("promo3"));;
-		j4 = new Planning(new MaDate (22,1,2017), new String("Jeudi"),new String("cours4"),new String("Salle4"),new String("prof4"),new String("promo4"));;
-		j5 = new Planning(new MaDate (13,1,2017),new String("Vendredi"), new String("cours5"),new String("Salle5"),new String("prof5"),new String("promo5"));;
+		j1 = new Planning(new String("19/01/2017"),new String("Lundi"), new String("cours1"),new String("Salle1"),new String("prof1"),new String("promo1"));
+		j2 = new Planning(new String("20/01/2017"), new String("Marddi"),new String("cours2"),new String("Salle2"),new String("prof2"),new String("promo2"));;
+		j3 = new Planning(new String("21/01/2017"), new String("Mercredi"),new String("cours3"),new String("Salle3"),new String("prof3"),new String("promo3"));;
+		j4 = new Planning(new String("(22/01/2017"), new String("Jeudi"),new String("cours4"),new String("Salle4"),new String("prof4"),new String("promo4"));;
+		j5 = new Planning(new String("23/01/2017"),new String("Vendredi"), new String("cours5"),new String("Salle5"),new String("prof5"),new String("promo5"));;
 		
 		/*mise en page*/
 		this.setLayout(new BorderLayout());
